@@ -9,9 +9,9 @@ export const Code = ({ children, syntax }, { darkBg } = {}) => (
           border: 1px solid #eaeaea;
           padding: 20px;
           margin: 40px 0;
-          white-space: pre;
+          // white-space: pre;
           overflow: auto;
-          -webkit-overflow-scrolling: touch;
+          // -webkit-overflow-scrolling: touch;
         }
         code {
           color: #bd10e0;
@@ -30,6 +30,7 @@ export const Code = ({ children, syntax }, { darkBg } = {}) => (
         .dark.shell code {
           color: #50e3c2;
         }
+
       `}
     </style>
   </pre>
@@ -39,8 +40,8 @@ Code.contextTypes = {
   darkBg: PropTypes.bool
 }
 
-export const InlineCode = ({ children, noWrap }) => (
-  <code className={noWrap && 'no-wrap'}>
+export const InlineCode = ({ children, noWrap, floatRight }) => (
+  <code className={floatRight && 'float-right'}>
     {children}
     <style jsx>
       {`
@@ -55,6 +56,10 @@ export const InlineCode = ({ children, noWrap }) => (
 
         code.no-wrap {
           white-space: nowrap;
+        }
+
+        code.float-right {
+          float: right;
         }
 
         code::before {

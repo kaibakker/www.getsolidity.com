@@ -1,0 +1,20 @@
+{
+  "name": "ZRX token",
+  "introduction": "Hello every, this document will provide the basic use",
+  "abis": [
+    {
+      "abi": {
+        "hash": "ethereum/abi/0x67492834752394852/transfer(address,uint256)"
+      },
+      "description": {
+        "body": "Any amount can be transfered as long as the sender owns enough of the token.",
+        "inputs": [
+          "What do you think",
+          "I dont think anything",
+        ],
+        "returns": "asdfasdf",
+        "properties": "sadfasdfa"
+      }
+    }
+  ]
+}

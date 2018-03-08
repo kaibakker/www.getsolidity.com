@@ -1,0 +1,17 @@
+.transaction {
+  background-color: gray;
+  opacity: 1;
+  overflow: hidden;
+  padding: 5px; }
+
+.block--new .transaction {
+  opacity: 0; }
+
+.transaction.transaction--input {
+  background-color: #46B29D !important; }
+
+.transaction.transaction--create {
+  background-color: #FF6865 !important; }
+
+.chain--decentraland .transaction.transaction--to {
+  background-color: #E68346 !important; }

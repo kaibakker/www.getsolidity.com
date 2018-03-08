@@ -1,0 +1,8 @@
+.mdl-switch {
+  margin-bottom: 14px; }
+  .mdl-switch__track, .mdl-switch.is-checked .mdl-switch__track {
+    background-color: #111; }
+  .mdl-switch--calls.is-checked .mdl-switch__thumb {
+    background-color: #46B29D; }
+  .mdl-switch--creations.is-checked .mdl-switch__thumb {
+    background-color: #FF6865; }

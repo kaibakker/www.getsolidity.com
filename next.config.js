@@ -6,8 +6,11 @@ module.exports = {
     const pages = paths
       .map(path => {
         path = path.replace(/^pages/, '')
+        // path = path.replace(/^abi/, '')
+
         path = path.replace('index.js', '')
         path = path.replace('.js', '')
+
 
         if (path === '/_document') return
         if (path === '/') return path

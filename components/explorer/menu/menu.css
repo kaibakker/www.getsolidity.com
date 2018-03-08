@@ -1,0 +1,67 @@
+.menu {
+  z-index: 1;
+  position: fixed;
+  width: 300px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #222;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out; }
+  .menu * {
+    box-sizing: border-box; }
+  .menu--open {
+    transform: translateX(0); }
+    .menu--open .menu-icon {
+      transform: translateX(-22px) !important; }
+  .menu__content {
+    margin-top: 70px;
+    padding: 20px 20px 20px 30px;
+    color: #eee; }
+  .menu .menu-heading {
+    color: #999;
+    margin-top: 30px;
+    margin-bottom: 15px; }
+  .menu .examples {
+    margin-left: 54px;
+    font-size: 0.9em;
+    color: #888; }
+    .menu .examples span {
+      text-decoration: underline;
+      cursor: pointer; }
+  .menu footer {
+    font-size: 0.7em;
+    position: absolute;
+    bottom: 0;
+    color: #999;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.3; }
+    .menu footer .logos {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px; }
+      .menu footer .logos a {
+        width: 24px;
+        height: 24px;
+        display: block; }
+        .menu footer .logos a:first-child {
+          margin-right: 15px; }
+        .menu footer .logos a.github {
+          background-image: url("github.svg"); }
+        .menu footer .logos a.twitter {
+          background-image: url("twitter.svg"); }
+    .menu footer .attributions {
+      color: #777; }
+    .menu footer a {
+      text-decoration: none;
+      color: #999; }
+
+@media screen and (max-width: 900px) {
+  .menu footer {
+    position: static; }
+    .menu footer .logos {
+      margin-bottom: 4px; }
+  .menu__content {
+    margin-top: 0px; } }

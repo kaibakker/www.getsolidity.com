@@ -167,25 +167,15 @@ class Header extends React.PureComponent {
         )}
 
         <header className={clean ? 'clean' : null}>
-          <a
-            href={
-              currentTeamSlug
-                ? `/teams/${currentTeamSlug}`
-                : this.props.user && !lean ? '/dashboard' : '/'
-            }
-            className="logo"
-            onMouseEnter={this.onLogoMouseEnter}
-            onContextMenu={this.onLogoRightClick}
-          >
-            {this.props.logo ? <span>{this.props.logo}</span> : <Logo />}
-          </a>
+
           <div
-            className="menu-arrow"
+            className="menu-arrow purple"
             onClick={event => {
               event.currentTarget.classList.toggle('toggled')
               this.setState({ responsive: !this.state.responsive })
             }}
           >
+            {!clean ? this.props.pathname : null}
             {!clean ? <Arrow /> : null}
           </div>
           <div
@@ -193,257 +183,50 @@ class Header extends React.PureComponent {
               'nav-container ' + (this.state.responsive ? 'responsive' : '')
             }
           >
-            {!clean ? (
+            {clean ? (
               <div className="nav left">
-                <Link href="/about">
+                <Link href="/">
                   <a
-                    className={'/about' === this.state.section ? 'active' : ''}
-                  >
-                    About
+                    className={'/' === this.state.section ? 'active purple' : ' purple'}
+                  ><h2>
+                    GETSOLIDITY.COM
+                    </h2>
                   </a>
                 </Link>
-                <Link href="/blog">
-                  <a className={'/blog' === this.state.section ? 'active' : ''}>
-                    Blog
-                  </a>
-                </Link>
-                <Link href="/now">
-                  <a className={'/now' === this.state.section ? 'active' : ''}>
-                    Now
-                  </a>
-                </Link>
-                <Link href="/world">
-                  <a
-                    className={'/world' === this.state.section ? 'active' : ''}
-                  >
-                    World
-                  </a>
-                </Link>
-                <Link href="/domains">
-                  <a
-                    className={
-                      '/domains' === this.state.section ? 'active' : ''
-                    }
-                  >
-                    Domains
-                  </a>
-                </Link>
-                <Link href="/api">
-                  <a className={'/api' === this.state.section ? 'active' : ''}>
-                    Api
-                  </a>
-                </Link>
-                <Link href="/oss">
-                  <a className={'/oss' === this.state.section ? 'active' : ''}>
-                    OSS
-                  </a>
-                </Link>
-                <Link href="/docs">
-                  <a className={'/docs' === this.state.section ? 'active' : ''}>
-                    Docs
-                  </a>
-                </Link>
-                <Link {...pricingLinkProps}>
-                  <a className={pricingIsActive ? 'active' : ''}>Pricing</a>
-                </Link>
+
               </div>
             ) : null}
 
             <div className="nav right">
-              {!clean && !this.props.user
-                ? [
-                    <Link href="/download" key="0">
-                      <a
-                        className={
-                          ('/download' === this.state.section ? 'active' : '') +
-                          ' download'
-                        }
-                      >
-                        Download
-                      </a>
-                    </Link>,
-                    <Link key="-3" href="/day">
-                      <a
-                        className={
-                          ('/day' === this.state.section ? 'active' : '') +
-                          ' day'
-                        }
-                      >
-                        Day
-                      </a>
-                    </Link>,
-                    <Link key="-2" href="/tv">
-                      <a
-                        className={
-                          ('/tv' === this.state.section ? 'active' : '') + ' tv'
-                        }
-                      >
-                        TV
-                      </a>
-                    </Link>,
-                    <Link href="/chat" key="1">
-                      <a
-                        className={`chat ${this.state.chatCount
-                          ? 'chat-active'
-                          : ''}`}
-                      >
-                        Chat
-                        <span>{this.state.chatCount}</span>
-                      </a>
-                    </Link>,
-                    <Link href="/login" key="2">
-                      <a
-                        className={
-                          '/login' === this.state.section ? 'active' : ''
-                        }
-                      >
-                        Login
-                      </a>
-                    </Link>
-                  ]
-                : null}
-              {!clean && this.props.user
-                ? [
-                    <Link href="/download" key="0">
-                      <a
-                        className={
-                          ('/download' === this.state.section ? 'active' : '') +
-                          ' download'
-                        }
-                      >
-                        Download
-                      </a>
-                    </Link>,
-                    <Link key="-3" href="/day">
-                      <a
-                        className={
-                          ('/day' === this.state.section ? 'active' : '') +
-                          ' day'
-                        }
-                      >
-                        Day
-                      </a>
-                    </Link>,
-                    <Link key="-2" href="/tv">
-                      <a
-                        className={
-                          ('/tv' === this.state.section ? 'active' : '') + ' tv'
-                        }
-                      >
-                        TV
-                      </a>
-                    </Link>,
-                    <Link href="/chat" key="1">
-                      <a
-                        className={`chat ${this.state.chatCount
-                          ? 'chat-active'
-                          : ''}`}
-                      >
-                        Chat
-                        <span>{this.state.chatCount}</span>
-                      </a>
-                    </Link>,
-                    <Link href="/dashboard" key="2">
-                      <a className="mobile-link">Dashboard</a>
-                    </Link>,
-                    <Link href="/account/identity" as="/account" key="3">
-                      <a className="mobile-link account">
-                        Account
-                        <div className="avatar-container">
-                          <Avatar
-                            uid={this.props.user.uid}
-                            title={
-                              this.props.user.username || this.props.user.email
-                            }
-                            size={30}
-                            hash={this.props.user.avatar}
-                          />
-                        </div>
-                      </a>
-                    </Link>,
-                    <a
-                      onClick={this.onLogout}
-                      className="mobile-logout mobile-link"
-                      key="4"
-                    >
-                      Logout
-                    </a>,
-                    <span key="avatar" className="avatar">
-                      <AvatarPopOverLink
-                        user={this.props.user}
-                        pathname={this.props.pathname}
-                        onLogout={this.onLogout}
-                      />
-                    </span>
-                  ]
-                : null}
 
-              {clean && this.props.user
+              {clean && this.props.address
                 ? [
-                    <Link href="/dashboard" key="2">
-                      <a className="mobile-link">Dashboard</a>
-                    </Link>,
-                    <Link href="/account/identity" as="/account" key="3">
-                      <a className="mobile-link account">
-                        Account
-                        <div className="avatar-container">
-                          <Avatar
-                            uid={this.props.user.uid}
-                            title={
-                              this.props.user.username || this.props.user.email
-                            }
-                            size={30}
-                            hash={this.props.user.avatar}
-                          />
-                        </div>
+                    <Link href={"/contracts/abi?address=" + this.props.address} key="2">
+                      <a className={this.props.type === 'contracts/abi' ? 'active' : ''}>
+                        ABI
                       </a>
                     </Link>,
-                    <a
-                      onClick={this.onLogout}
-                      className="mobile-logout mobile-link"
-                      key="4"
-                    >
-                      Logout
-                    </a>,
-                    <span key="avatar" className="avatar">
-                      <AvatarPopOverLink
-                        user={this.props.user}
-                        pathname={this.props.pathname}
-                        onLogout={this.onLogout}
-                      />
-                    </span>
-                  ]
-                : null}
-              {clean && !this.props.user
-                ? [
-                    <Link href="/login" key="2">
-                      <a
-                        className={
-                          '/login' === this.state.section ? 'active' : ''
-                        }
-                      >
-                        Login
+                    <Link href={"/contracts/seth?address=" + this.props.address} key="2">
+                      <a className={this.props.type === 'contracts/seth' ? 'active' : ''}>
+                        SETH
                       </a>
-                    </Link>
+                    </Link>,
+                    <Link href={"/contracts/web3?address=" + this.props.address} key="2">
+                      <a className={this.props.type === 'contracts/web3' ? 'active' : ''}>
+                        Web3
+                      </a>
+                    </Link>,
+                    <Link href={"http://188.166.83.230/contracts/" + this.props.address} key="2">
+                      <a className={this.props.type === 'contracts/abi' ? 'active' : ''}>
+                        Download
+                      </a>
+                    </Link>,
                   ]
                 : null}
             </div>
           </div>
         </header>
-        {this.props.title ? (
-          <h1 className="title">
-            {this.props.subtitle ? (
-              [
-                <b key="0">{this.props.title}: </b>,
-                <span className="subtitle" key="1">
-                  {this.props.subtitle}
-                </span>
-              ]
-            ) : (
-              <b>{this.props.title}</b>
-            )}
-          </h1>
-        ) : null}
+        <h4 className={'clean'} >{(this.props.title || " ").slice(0, 15) }</h4>
         <style jsx>
           {`
             header {
@@ -453,9 +236,12 @@ class Header extends React.PureComponent {
               position: relative;
             }
 
-            header.clean {
+            .clean {
               max-width: 100%;
               margin: 0 30px;
+            }
+            .purple {
+              color: #de9aec;
             }
 
             .lean .nav.left,
@@ -482,7 +268,7 @@ class Header extends React.PureComponent {
             }
 
             .dark .nav > a:hover {
-              color: #fff;
+              color: #c059d5;
             }
 
             .logout-error {
@@ -521,7 +307,7 @@ class Header extends React.PureComponent {
             .nav {
               margin-top: -2px;
               padding: 10px;
-              padding-right: 0;
+              padding-left: 0;
               position: absolute;
               top: 50%;
               transform: translateY(-50%);
@@ -570,6 +356,8 @@ class Header extends React.PureComponent {
 
             .nav a {
               padding: 10px;
+              padding-left: 0;
+
               font-size: 12px;
               text-transform: uppercase;
               font-weight: normal;
@@ -583,6 +371,10 @@ class Header extends React.PureComponent {
 
             .nav a.active {
               color: #000;
+            }
+
+            .nav a.purple {
+              color: #de9aec;
             }
 
             .dark .nav a.active {
@@ -601,7 +393,7 @@ class Header extends React.PureComponent {
             }
 
             .left {
-              left: 50px;
+              left: 0;
             }
 
             .title {
@@ -783,9 +575,9 @@ class Header extends React.PureComponent {
                 padding: 0;
               }
 
-              .logo {
-                margin-left: 20px;
-              }
+              // .logo {
+              //   margin-left: 20px;
+              // }
 
               .menu-arrow {
                 display: flex;
