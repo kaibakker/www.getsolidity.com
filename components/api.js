@@ -100,7 +100,7 @@ class ABI extends React.PureComponent {
   render() {
     const { props } = this
     const { hash } = this.state
-
+    console.log("x-documenation", props.response)
     return (
       <Page dayBanner={false}>
         <Head titlePrefix="" title={this.name} />
@@ -149,20 +149,21 @@ class ABI extends React.PureComponent {
             </div>
 
             <div className="content" ref={ref => (this.contentNode = ref)}>
-              {this.data.map(({ id, posts }) => {
-                console.log(props.address)
+              {this.data.map(({ id, posts }, index) => {
                 return (
                   <div key={id} className="category">
                     {posts.map(post => {
+                      const description = props.response["x-documentation"].find(({ text_signature }) => { return text_signature === `${ post.abi.name }(${ post.abi.inputs.map(({type}) => { return type }).join(',') })` } )  || {}
+                      console.log(description)
                       if(post.type === 'ABIDescription') {
                         return (<SectionContainer
-                          key={post.id || "sadfds"}
-                          hash={post.hash || "sadfds"}
-                          name={post.name || "sadfasd"}
+                          key={post.id || ""}
+                          hash={post.hash || ""}
+                          name={post.name || ""}
                         >
                           <ABISection
                             abi={post.abi}
-                            description={post.description || {} }
+                            description={ description }
                             contract={props.contract}
                             address={props.address}
                             implementation={props.implementation}

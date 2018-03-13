@@ -1,5 +1,5 @@
 export const API_URL = process.env.NODE_ENV === 'production' ?
-  'http://188.166.83.230/' :
+  'http://localhost:8000/' :
   'http://localhost:8000/';
   // const server_url = 'http://188.166.83.230'
 

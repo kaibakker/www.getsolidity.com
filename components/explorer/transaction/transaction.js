@@ -51,10 +51,8 @@ export default ({
         { data.to && data.to.slice(0, 10) } { ''}
         { data.abi.name }()
 
-
-
         { data.abi.payable && `: ${gweiToEther(data.value).toPrecision(2)} ETH`}
-        <a style={{float: 'right'}} href={'/contracts/web3?address=' + data.to + "#" + data.abi.name } >see documentation</a>
+        <a style={{float: 'right'}} href={'/contracts/abi?address=' + data.to + "#" + data.abi.name } >see documentation</a>
       </div>
 
     );

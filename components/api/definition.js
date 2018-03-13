@@ -15,7 +15,12 @@ export function Definition({ children, abi, description, ...props }) {
   if(!abi.outputs) abi.outputs = [];
   // if(!abi.outputs[0]) abi.outputs[0] = { type: "nothing", name: 'empty'};
   // if(!abi.inputs) abi.inputs = [];
-  let list = [<Code>{abi.type} { abi.name }(<ParamsString params={abi.inputs} maxLengthForName={10} />) { abi.constant && 'constant ' }{ abi.payable && 'payable ' }returns (<ParamsString params={abi.outputs} maxLengthForName={10} />)</Code>]
+  let list = []
+  list.push(<P>{ description.abstract }</P>)
+
+
+  list.push(<Code>{abi.type} { abi.name }(<ParamsString params={abi.inputs} maxLengthForName={10} />) { abi.constant && 'constant ' }{ abi.payable && 'payable ' }returns (<ParamsString params={abi.outputs} maxLengthForName={10} />)</Code>)
+
 
   if(abi.inputs.length > 0 ) {
     list.push(<H5>Inputs <InlineCode floatRight={true}><ParamsString params={abi.inputs} maxLengthForName={2} /></InlineCode></H5>)
@@ -32,9 +37,24 @@ export function Definition({ children, abi, description, ...props }) {
     }
 
   }
-  // if(description.returns) {
+
+  if(abi.outputs.length > 0 ) {
     list.push(<H5>Returns <InlineCode floatRight={true}><ParamsString params={abi.outputs} maxLengthForName={2} /></InlineCode></H5>)
-    if(description.returns) list.push(<P>{ description.returns }</P>);
+
+    if(description.outputs) {
+      list.push(<Table>
+        {abi.outputs.map((item, index) => {
+          return <Row key={index}>
+            <Cell><i>{item.type}</i><br /><b>{item.name}</b></Cell>
+            <Cell>{ description.outputs && description.outputs[0] }</Cell>
+          </Row>
+        })}
+      </Table>)
+    }
+
+  }
+  // if(description.returns) {
+    // if(description.returns) list.push(<P>{ description.returns }</P>);
   // }
   list.push(<H5>Properties <InlineCode floatRight={true}>{ abi.constant && 'constant ' }{ abi.payable && 'payable ' }{ (!abi.payable && !abi.constant) && 'non-payable ' }{abi.type}</InlineCode></H5>)
   if(description.properties) list.push(<P>{ description.properties }</P>)

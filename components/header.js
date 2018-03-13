@@ -217,7 +217,7 @@ class Header extends React.PureComponent {
                       </a>
                     </Link>,
                     <Link href={"http://188.166.83.230/contracts/" + this.props.address} key="2">
-                      <a className={this.props.type === 'contracts/abi' ? 'active' : ''}>
+                      <a>
                         Download
                       </a>
                     </Link>,

@@ -1,11 +1,14 @@
-# ZEIT Documentation
+# www.getSolidity.com
 
+
+
+# IMPORTANT BELOW IS OLD ZEIT RELATED INFORMATION
 This is the public documentation for **ZEIT now** all other related services.<br/>
 You can access this documentation online at https://zeit.co/docs .
 
 ### Running Locally
 
-Download the copy of this repostory. 
+Download the copy of this repostory.
 
 ~~~sh
 git clone https://github.com/zeit/docs.git
@@ -14,7 +17,7 @@ git clone https://github.com/zeit/docs.git
 Then visit to the downloaded repository and install dependencies with:
 
 ~~~sh
-npm install 
+npm install
 ~~~
 
 Then you can run the app with:
@@ -63,7 +66,7 @@ Then you can add it to the sidebar by editing the file located at: `lib/data/doc
 
 ### Adding Images and Assets
 
-You can add images and assets into the `static` directory. Always try to avoid using hosted images. 
+You can add images and assets into the `static` directory. Always try to avoid using hosted images.
 If you are creating a new docs page, keep you images inside a subdirectory under `static/docs`.
 
 ### New Components

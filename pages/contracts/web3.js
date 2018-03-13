@@ -9,6 +9,6 @@ export default ({url}) => {
   console.log(url.query.address)
   return <Web3Container address={url.query.address} web3={true}
     renderLoading={() => <div>Loading abi data and connect to web3...</div>}
-    render={({web3, accounts, contract}) => { return <API abi={contract.abi} name={contract.address} accounts={accounts} web3={web3} contract={contract} implementation={"web3"}  type={"contracts/web3"} address={ url.query.address}/> } }
+    render={({web3, accounts, contract, response}) => { return <API abi={contract.abi} name={contract.address} accounts={accounts} web3={web3} contract={contract} response={response} implementation={"web3"}  type={"contracts/web3"} address={ contract.address}/> } }
   />
 }
